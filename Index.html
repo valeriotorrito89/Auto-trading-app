@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Auto Trading App</title>
+  <style>
+    body { font-family: sans-serif; max-width: 400px; margin: 2em auto; }
+    label, select, input { display: block; width: 100%; margin-bottom: 1em; }
+    button { padding: 0.5em 1em; }
+    #result { margin-top: 2em; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Auto Trading App</h1>
+  <label for="amount">Importo da investire (€):</label>
+  <input id="amount" type="number" min="1" placeholder="Es. 100">
+
+  <label for="risk">Livello di rischio:</label>
+  <select id="risk">
+    <option value="basso">Basso</option>
+    <option value="medio">Medio</option>
+    <option value="alto">Alto</option>
+  </select>
+
+  <button onclick="startInvest()">Avvia Investimento</button>
+
+  <div id="result"></div>
+
+  <script>
+    function startInvest() {
+      const amt = document.getElementById('amount').value;
+      const risk = document.getElementById('risk').value;
+      if (!amt || amt <= 0) {
+        alert('Inserisci un importo valido.');
+        return;
+      }
+      document.getElementById('result').innerText =
+        `Hai scelto di investire ${amt} € con rischio “${risk}”.`;
+      // Qui in futuro potremo chiamare le tue API di Kraken via fetch()
+    }
+  </script>
+</body>
+</html>
